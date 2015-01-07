@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sectionable_id: 
+  sectionable_type: Sectionable
+  article_id: 
+
+two:
+  sectionable_id: 
+  sectionable_type: Sectionable
+  article_id: 
