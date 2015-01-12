@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/petr/r/activeadmin
+GIT
+  remote: git://github.com/activeadmin/activeadmin.git
+  revision: 7aef260921d418d904d2dba9b1a97eed893e9019
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -16,7 +17,7 @@ PATH
       sass-rails
 
 PATH
-  remote: /Users/petr/r/activeadmin-polymorphic
+  remote: ../activeadmin-polymorphic
   specs:
     activeadmin-polymorphic (0.0.1)
       activeadmin
