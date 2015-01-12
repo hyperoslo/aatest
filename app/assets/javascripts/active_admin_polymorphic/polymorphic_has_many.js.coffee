@@ -44,10 +44,12 @@ strip_actions = (form) ->
   console.log form
   form
 
-window.extract_form = (url)->
+window.extractAndInsertForm= (url, target)->
+  target = $ target
+
   $.get url, (data)->
     elements = $(data)
-    found = $('#main_content form', elements)
-    form = found[0]
+    form = $('#main_content form', elements).first()
     $(form).find('.actions').remove()
-    form
+
+    target.replaceWith form

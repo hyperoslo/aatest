@@ -17,6 +17,8 @@ ActiveAdmin.register Article do
 
     f.inputs :created_at
 
+    h2 "Sections"
+
     f.polymorphic_has_many :sections, :sectionable, types: ['Text', 'Image'], allow_destroy: true
     f.actions
   end
