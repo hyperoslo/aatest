@@ -1,4 +1,5 @@
 #= require active_admin/base
+#= require active_admin_polymorphic/polymorphic_has_many
 #
 $ ->
   $('form').on 'change', 'select[parent]', ->

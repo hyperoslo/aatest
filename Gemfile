@@ -38,5 +38,6 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'activeadmin', path: '/Users/petr/r/activeadmin'
+gem 'activeadmin-polymorphic', path: '/Users/petr/r/activeadmin-polymorphic'
 gem 'better_errors'
