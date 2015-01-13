@@ -5,7 +5,7 @@ ActiveAdmin.register Article do
     actions
   end
 
-  SECTIONABLES = [ 'Text', 'Image' ]
+  SECTIONABLES = [ Text, Image ]
   form builder: ActiveAdminPolymorphic::FormBuilder do |f|
 #    f.has_many :sections do |section|
 #      section.semantic_fields_for :sectionable do |ff|
@@ -19,7 +19,7 @@ ActiveAdmin.register Article do
 
     h2 "Sections"
 
-    f.polymorphic_has_many :sections, :sectionable, types: ['Text', 'Image'], allow_destroy: true
+    f.polymorphic_has_many :sections, :sectionable, types: SECTIONABLES, allow_destroy: true
     f.actions
   end
 end
