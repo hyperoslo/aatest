@@ -1,4 +1,12 @@
 $ ->
+  $('.polymorphic_has_many_fields').each (index, rapper) ->
+    rapper = $ rapper
+
+    hiddenField = rapper.find 'input[type=hidden][data-path]'
+    formPath = hiddenField.data 'path'
+
+    extractAndInsertForm formPath, rapper
+
   $(document).on 'click', 'a.button.polymorphic_has_many_remove', (e)->
     e.preventDefault()
     parent    = $(@).closest '.polymorphic_has_many_container'
