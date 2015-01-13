@@ -12,8 +12,9 @@ $ ->
         remoteSubmit @, ->
           counter++
           if counter == expect
+            console.log "here"
             $(form).find('form').remove()
-            $(parentForm).submit()
+            # $(parentForm).submit()
 
   $('.polymorphic_has_many_fields').each (index, rapper) ->
     rapper = $ rapper
@@ -100,13 +101,20 @@ window.extractAndInsertForm= (url, target)->
 
 window.remoteSubmit = (target, callback)->
   $(target).data('remote', true)
+  $(target).removeAttr('novalidate')
+  action = $(target).attr('action')
   $(target).attr('action', $(target).attr('action') + '.json') # we gonna burn in hell for that
 
   $(target).trigger('submit.rails')
-    .on 'ajax:beforeSend', ()->
-      console.log arguments
-      debugger
+    .on 'ajax:error', (event, response, status)->
+      if response.status == 422
+        $(target).attr('action', action)
+        $(target).trigger('submit.rails').on 'ajax:complete', () ->
+          debugger
+
     .on 'ajax:success', (event, object, status, response) ->
+      console.log "here"
+
       if response.status == 201
         $(target).next().find('input:first').val(object.id)
 
