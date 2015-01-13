@@ -25,6 +25,25 @@ $ ->
       recompute_positions parent
       parent.trigger 'polymorphic_has_many_add:after', [fieldset, parent]
 
+  $('.polymorphic_has_many_container').on 'change', '.polymorphic_type_select', (event) ->
+    fieldset = $(this).closest 'fieldset'
+
+    selectedOption = $(this).find 'option:selected'
+    formPath = selectedOption.data 'path'
+
+    label = $(this).prev 'label'
+    label.remove()
+
+    hiddenField = $('<input type="hidden" />')
+    hiddenField.attr 'name', $(this).attr('name')
+    hiddenField.val $(this).val()
+
+    $(this).replaceWith hiddenField
+
+    newListItem = $ '<li>'
+
+    extractAndInsertForm formPath, fieldset
+
 recompute_positions = (parent)->
   parent     = if parent instanceof jQuery then parent else $(@)
   input_name = parent.data 'sortable'
@@ -52,4 +71,4 @@ window.extractAndInsertForm= (url, target)->
     form = $('#main_content form', elements).first()
     $(form).find('.actions').remove()
 
-    target.replaceWith form
+    target.prepend form
