@@ -1,4 +1,20 @@
 $ ->
+  if $('.polymorphic_has_many_container').length
+    form = $('#main_content').find('form:first')
+    counter = 0
+    $(form).on 'submit', (e) ->
+      parentForm = @
+      expect = $(@).find('form').length
+      if counter < expect
+        e.preventDefault()
+
+      $(@).find('form').each ->
+        remoteSubmit @, ->
+          counter++
+          if counter == expect
+            $(form).find('form').remove()
+            $(parentForm).submit()
+
   $('.polymorphic_has_many_fields').each (index, rapper) ->
     rapper = $ rapper
 
@@ -6,6 +22,7 @@ $ ->
     formPath = hiddenField.data 'path'
 
     extractAndInsertForm formPath, rapper
+
 
   $(document).on 'click', 'a.button.polymorphic_has_many_remove', (e)->
     e.preventDefault()
@@ -80,3 +97,17 @@ window.extractAndInsertForm= (url, target)->
     $(form).find('.actions').remove()
 
     target.prepend form
+
+window.remoteSubmit = (target, callback)->
+  $(target).data('remote', true)
+  $(target).attr('action', $(target).attr('action') + '.json') # we gonna burn in hell for that
+
+  $(target).trigger('submit.rails')
+    .on 'ajax:beforeSend', ()->
+      console.log arguments
+      debugger
+    .on 'ajax:success', (event, object, status, response) ->
+      if response.status == 201
+        $(target).next().find('input:first').val(object.id)
+
+      callback()

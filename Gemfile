@@ -41,3 +41,5 @@ gem 'spring',        group: :development
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'activeadmin-polymorphic', path: '../activeadmin-polymorphic'
 gem 'better_errors'
+gem 'mini_magick'
+gem 'carrierwave'
