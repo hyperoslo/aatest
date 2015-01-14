@@ -2,6 +2,7 @@ require 'active_admin_polymorphic'
 
 ActiveAdmin.register Article do
   index do
+    column :title
     actions
   end
 
@@ -15,7 +16,7 @@ ActiveAdmin.register Article do
 #      section.input :sectionable_type, as: :text
 #    end
 
-    f.inputs :created_at
+    f.inputs :title, :created_at # short syntax rules
 
     h2 "Sections"
 

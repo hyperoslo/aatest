@@ -12,7 +12,6 @@ $ ->
         remoteSubmit @, ->
           counter++
           if counter == expect
-            console.log "here"
             $(form).find('form').remove()
             $(parentForm).submit()
 
@@ -84,11 +83,6 @@ recompute_positions = (parent)->
     if sortable_input.length
       sortable_input.val if destroy_input.is ':checked' then '' else position++
 
-strip_actions = (form) ->
-  $(form).remove('.actions').html()
-  console.log form
-  form
-
 window.extractAndInsertForm= (url, target)->
   target = $ target
 
@@ -96,26 +90,48 @@ window.extractAndInsertForm= (url, target)->
     elements = $(data)
     form = $('#main_content form', elements).first()
     $(form).find('.actions').remove()
+    $(form).submit ->
+      return false
 
     target.prepend form
+
+window.loadErrors = (target) ->
+  $(target).off('ajax:success') # unbind successfull action for json form
+  $(target).trigger('submit.rails').on 'ajax:success', (event, data, result) ->
+    # duplicates method above. refactor using callbacks
+    elements = $(data)
+    form = $('#main_content form', elements).first()
+    $(form).find('.actions').remove()
+    $(form).submit ->
+      return false
+
+    $(target).replaceWith(form)
+
 
 window.remoteSubmit = (target, callback)->
   $(target).data('remote', true)
   $(target).removeAttr('novalidate')
   action = $(target).attr('action')
-  $(target).attr('action', $(target).attr('action') + '.json') # we gonna burn in hell for that
+  # we gonna burn in hell for that
+  # perhaps we can use ajax:before callback
+  # to set type json
+  action_with_json = action + '.json'
+  $(target).attr('action', action_with_json)
 
   $(target).trigger('submit.rails')
     .on 'ajax:error', (event, response, status)->
+      $(target).attr('action', action)
       if response.status == 422
-        $(target).attr('action', action)
-        $(target).trigger('submit.rails').on 'ajax:complete', () ->
-          debugger
-
+        loadErrors(target)
     .on 'ajax:success', (event, object, status, response) ->
-      console.log "here"
-
-      if response.status == 201
+      $(target).attr('action', action)
+      if response.status == 201 # created
         $(target).next().find('input:first').val(object.id)
+        # replace new form with edit form
+        # to update form method to PATCH and form action
+        url = "#{action}/#{object.id}/edit"
+        extractAndInsertForm(url, $(target).parent('fieldset'))
+        $(target).remove()
 
-      callback()
+        callback()
+
