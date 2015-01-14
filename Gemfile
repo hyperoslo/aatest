@@ -42,4 +42,4 @@ gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'activeadmin-polymorphic', path: '../activeadmin-polymorphic'
 gem 'better_errors'
 gem 'mini_magick'
-gem 'carrierwave'
+gem "refile", require: ["refile/rails", "refile/image_processing"]

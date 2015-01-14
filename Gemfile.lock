@@ -62,11 +62,6 @@ GEM
       sass (~> 3.2)
       thor
     builder (3.2.2)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -111,6 +106,8 @@ GEM
     polyamorous (1.1.0)
       activerecord (>= 3.0)
     rack (1.5.2)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.1.6)
@@ -137,6 +134,9 @@ GEM
       polyamorous (~> 1.1)
     rdoc (4.2.0)
       json (~> 1.4)
+    refile (0.5.2)
+      mime-types
+      sinatra (~> 1.4.5)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     sass (3.2.19)
@@ -148,6 +148,10 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sinatra (1.4.5)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
     spring (1.2.0)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -177,12 +181,12 @@ DEPENDENCIES
   activeadmin!
   activeadmin-polymorphic!
   better_errors
-  carrierwave
   coffee-rails (~> 4.0.0)
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick
   rails (= 4.1.6)
+  refile
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
