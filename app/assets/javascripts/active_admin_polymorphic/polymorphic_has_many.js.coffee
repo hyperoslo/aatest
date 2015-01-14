@@ -14,7 +14,7 @@ $ ->
           if counter == expect
             console.log "here"
             $(form).find('form').remove()
-            # $(parentForm).submit()
+            $(parentForm).submit()
 
   $('.polymorphic_has_many_fields').each (index, rapper) ->
     rapper = $ rapper
