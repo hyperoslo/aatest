@@ -110,6 +110,7 @@ window.remoteSubmit = (target, callback)->
   $(target).data('remote', true)
   $(target).removeAttr('novalidate')
   action = $(target).attr('action')
+  $(target).find("input[type=file]").remove()
   # we gonna burn in hell for that
   # perhaps we can use ajax:before callback
   # to set type json
@@ -118,13 +119,12 @@ window.remoteSubmit = (target, callback)->
 
   $(target).trigger('submit.rails')
     .on 'ajax:aborted:file', (inputs) ->
-      console.log "here"
+      false
     .on 'ajax:error', (event, response, status)->
       $(target).attr('action', action)
       if response.status == 422
         loadErrors(target)
     .on 'ajax:success', (event, object, status, response) ->
-      console.log "here"
       $(target).attr('action', action)
       if response.status == 201 # created
         $(target).next().find('input:first').val(object.id)
