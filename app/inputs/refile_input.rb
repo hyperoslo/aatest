@@ -1,5 +1,6 @@
 class RefileInput < Formtastic::Inputs::FileInput
-  def input_html_options
+  def file_input_html_options
+    options.delete :hint
     options[:data] ||= {}
 
     attacher = object.send(:"#{method}_attacher")
@@ -17,13 +18,17 @@ class RefileInput < Formtastic::Inputs::FileInput
       options[:data].merge!(direct: true).merge!(attacher.cache.presign.as_json)
     end
 
-    options.merge(super)
+    options.merge(input_html_options)
+  end
+
+  def hidden_input_html_options
+    attacher = object.send(:"#{method}_attacher")
+    { value: attacher.data.to_json, object: object, id: nil }
   end
 
   def to_html
     input_wrapping do
-      label_html <<
-      builder.file_field(method, input_html_options)
+      label_html << builder.hidden_field(method, hidden_input_html_options) << builder.file_field(method, file_input_html_options)
     end
   end
 end

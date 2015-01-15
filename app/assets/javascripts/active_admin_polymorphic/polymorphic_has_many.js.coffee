@@ -119,11 +119,14 @@ window.remoteSubmit = (target, callback)->
   $(target).attr('action', action_with_json)
 
   $(target).trigger('submit.rails')
+    .on 'ajax:aborted:file', (inputs) ->
+      console.log "here"
     .on 'ajax:error', (event, response, status)->
       $(target).attr('action', action)
       if response.status == 422
         loadErrors(target)
     .on 'ajax:success', (event, object, status, response) ->
+      console.log "here"
       $(target).attr('action', action)
       if response.status == 201 # created
         $(target).next().find('input:first').val(object.id)
@@ -133,5 +136,5 @@ window.remoteSubmit = (target, callback)->
         extractAndInsertForm(url, $(target).parent('fieldset'))
         $(target).remove()
 
-        callback()
+      callback()
 
