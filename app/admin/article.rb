@@ -2,21 +2,18 @@ require 'active_admin_polymorphic'
 
 ActiveAdmin.register Article do
   index do
+    id_column
+
     column :title
+    column :created_at
+    column :updated_at
+
     actions
   end
 
   SECTIONABLES = [ Text, Image ]
   form builder: ActiveAdminPolymorphic::FormBuilder do |f|
-#    f.has_many :sections do |section|
-#      section.semantic_fields_for :sectionable do |ff|
-#        ff.input :title
-#      end
-#      section.input :sectionable_id, as: :text
-#      section.input :sectionable_type, as: :text
-#    end
-
-    f.inputs :title, :created_at # short syntax rules
+    f.inputs :title
 
     h2 "Sections"
 
