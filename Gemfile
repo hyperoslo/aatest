@@ -43,3 +43,6 @@ gem 'activeadmin-polymorphic', path: '../activeadmin-polymorphic'
 gem 'better_errors'
 gem 'mini_magick'
 gem "refile", require: ["refile/rails", "refile/image_processing"]
+
+gem 'pry-rails'
+gem 'pry-byebug'
