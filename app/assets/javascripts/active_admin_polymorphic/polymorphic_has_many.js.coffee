@@ -90,8 +90,7 @@ window.extractAndInsertForm= (url, target)->
     elements = $(data)
     form = $('#main_content form', elements).first()
     $(form).find('.actions').remove()
-    $(form).submit ->
-      return false
+    $(form).on 'submit', -> return false
 
     target.prepend form
 
@@ -102,8 +101,7 @@ window.loadErrors = (target) ->
     elements = $(data)
     form = $('#main_content form', elements).first()
     $(form).find('.actions').remove()
-    $(form).submit ->
-      return false
+    $(form).on 'submit', -> return false
 
     $(target).replaceWith(form)
 
