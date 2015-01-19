@@ -11,10 +11,13 @@ form .polymorphic_has_many_container fieldset:not(:last-of-type)
 
 form .polymorphic_has_many_container .handle
   position: absolute
-  top: calc(50% - 42px)
+  top: calc(50% - 60px)
   right: 2px
   padding: 0
   cursor: move
+
+  &.ui-sortable-handle
+    top: calc(50% - 42px)
 
   span.icon
     width: 3em
