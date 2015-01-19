@@ -75,7 +75,8 @@ $ ->
 init_polymorphic_sortable = ->
   elems = $('.polymorphic_has_many_container[data-sortable]:not(.ui-sortable)')
 
-  elems.sortable \
+  elems.sortable
+    axis: 'y'
     items: '> fieldset',
     handle: '> ol > .handle',
     stop:    recompute_positions
