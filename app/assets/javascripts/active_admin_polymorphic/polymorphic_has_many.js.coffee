@@ -50,6 +50,9 @@ $ ->
       recompute_positions parent
       parent.trigger 'polymorphic_has_many_add:after', [fieldset, parent]
 
+  init_polymorphic_sortable()
+
+
   $('.polymorphic_has_many_container').on 'change', '.polymorphic_type_select', (event) ->
     fieldset = $(this).closest 'fieldset'
 
@@ -68,6 +71,15 @@ $ ->
     newListItem = $ '<li>'
 
     extractAndInsertForm formPath, fieldset
+
+init_polymorphic_sortable = ->
+  elems = $('.polymorphic_has_many_container[data-sortable]:not(.ui-sortable)')
+
+  elems.sortable \
+    items: '> fieldset',
+    handle: '> ol > .handle',
+    stop:    recompute_positions
+  elems.each recompute_positions
 
 recompute_positions = (parent)->
   parent     = if parent instanceof jQuery then parent else $(@)

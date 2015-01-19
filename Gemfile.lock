@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: 7aef260921d418d904d2dba9b1a97eed893e9019
+  revision: 54bede0558a99ab759f98f9b24e1b0144063a81e
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -51,7 +51,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    arbre (1.0.2)
+    arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (5.0.1.20140414130214)
     better_errors (2.1.1)
@@ -142,7 +142,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
-    ransack (1.5.1)
+    ransack (1.6.2)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)

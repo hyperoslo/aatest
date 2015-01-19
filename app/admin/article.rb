@@ -17,7 +17,7 @@ ActiveAdmin.register Article do
 
     h2 "Sections"
 
-    f.polymorphic_has_many :sections, :sectionable, types: SECTIONABLES, allow_destroy: true
+    f.polymorphic_has_many :sections, :sectionable, types: SECTIONABLES, allow_destroy: true, sortable: :position
     f.actions
   end
 end
