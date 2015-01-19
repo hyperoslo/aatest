@@ -15,6 +15,16 @@ $ ->
             $(form).find('form').remove()
             $(parentForm).submit()
 
+  $(document).on "upload:start", "form", (event) ->
+    form = $('#main_content').find('form:first')
+    form.find("input[type=submit]").attr "disabled", true
+
+  $(document).on "upload:complete", "form", (event) ->
+    form = $('#main_content').find('form:first')
+
+    unless form.find("input.uploading").length
+      form.find("input[type=submit]").removeAttr "disabled"
+
   $('.polymorphic_has_many_fields').each (index, rapper) ->
     rapper = $ rapper
 
