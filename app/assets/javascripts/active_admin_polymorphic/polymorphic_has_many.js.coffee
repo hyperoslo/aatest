@@ -1,17 +1,17 @@
 $ ->
   if $('.polymorphic_has_many_container').length
     form = $('#main_content').find('form:first')
-    counter = 0
     $(form).on 'submit', (e) ->
+      submissions_counter = 0
       parentForm = @
       expect = $(@).find('form').length
-      if counter < expect
+      if submissions_counter < expect
         e.preventDefault()
 
       $(@).find('form').each ->
         remoteSubmit @, ->
-          counter++
-          if counter == expect
+          submissions_counter++
+          if submissions_counter == expect
             $(form).find('form').remove()
             $(parentForm).submit()
 
@@ -139,6 +139,9 @@ window.remoteSubmit = (target, callback)->
   # to set type json
   action_with_json = action + '.json'
   $(target).attr('action', action_with_json)
+
+  # unbind callbacks action for form if it was submitted before
+  $(target).off('ajax:success').off('ajax:aborted:file').off('ajax:error')
 
   $(target).trigger('submit.rails')
     .on 'ajax:aborted:file', (inputs) ->

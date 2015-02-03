@@ -153,6 +153,9 @@ GEM
     refile (0.5.2)
       mime-types
       sinatra (~> 1.4.5)
+    refile-input (0.0.1)
+      formtastic (~> 3.1)
+      refile (~> 0.5)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     sass (3.2.19)
@@ -206,6 +209,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.1.6)
   refile
+  refile-input
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
