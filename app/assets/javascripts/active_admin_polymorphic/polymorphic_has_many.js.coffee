@@ -13,6 +13,7 @@ $ ->
           submissions_counter++
           if submissions_counter == expect
             $(form).find('form').remove()
+            stripEmptyRelations()
             $(parentForm).submit()
 
   $(document).on "upload:start", "form", (event) ->
@@ -91,6 +92,13 @@ init_polymorphic_sortable = ->
     handle: '> ol > .handle',
     stop:    recompute_positions
   elems.each recompute_positions
+
+# Removes relations if id or type is not specified
+# For example when user clicked add relation button, but didn't selected type
+stripEmptyRelations = ->
+  $('.polymorphic_has_many_fields input:hidden').each ->
+    if $(@).val() == ""
+      $(@).parents('.polymorphic_has_many_fields').remove()
 
 recompute_positions = (parent)->
   parent     = if parent instanceof jQuery then parent else $(@)

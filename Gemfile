@@ -41,7 +41,7 @@ gem 'spring',        group: :development
 gem "refile", require: ["refile/rails", "refile/image_processing"]
 
 gem 'activeadmin', github: 'activeadmin/activeadmin'
-gem 'refile-input'
+gem 'refile-input', require: ["inputs/refile_input"]
 gem 'activeadmin-polymorphic', path: '../activeadmin-polymorphic'
 gem 'better_errors'
 gem 'mini_magick'
