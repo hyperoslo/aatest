@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.6'
+gem 'rails', '4.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -40,6 +40,7 @@ gem 'spring',        group: :development
 
 gem "refile", require: ["refile/rails", "refile/image_processing"]
 
+gem 'inherited_resources', github: 'josevalim/inherited_resources', branch: 'master'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'refile-input', require: ["inputs/refile_input"]
 gem 'activeadmin-polymorphic', path: '../activeadmin-polymorphic'
