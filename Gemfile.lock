@@ -16,17 +16,6 @@ GIT
       ransack (~> 1.3)
       sass-rails
 
-GIT
-  remote: git://github.com/josevalim/inherited_resources.git
-  revision: 9b1386f0effe9510e132915fa329f353f35db41c
-  branch: master
-  specs:
-    inherited_resources (1.6.0)
-      actionpack (>= 3.2, < 5)
-      has_scope (~> 0.6.0.rc)
-      railties (>= 3.2, < 5)
-      responders
-
 PATH
   remote: ../activeadmin-polymorphic
   specs:
@@ -109,6 +98,11 @@ GEM
       activesupport (>= 3.2, < 5)
     hike (1.2.3)
     i18n (0.7.0)
+    inherited_resources (1.6.0)
+      actionpack (>= 3.2, < 5)
+      has_scope (~> 0.6.0.rc)
+      railties (>= 3.2, < 5)
+      responders
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -128,7 +122,7 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.4.3)
-    mini_magick (4.0.2)
+    mini_magick (4.0.3)
     mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.10.1)
@@ -140,7 +134,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (2.0.0)
+    pry-byebug (3.0.0)
       byebug (~> 3.4)
       pry (~> 0.10)
     pry-rails (0.3.2)
@@ -183,7 +177,7 @@ GEM
       polyamorous (~> 1.1)
     rdoc (4.2.0)
       json (~> 1.4)
-    refile (0.5.2)
+    refile (0.5.3)
       mime-types
       sinatra (~> 1.4.5)
     refile-input (0.0.1)
@@ -235,7 +229,7 @@ DEPENDENCIES
   activeadmin-polymorphic!
   better_errors
   coffee-rails (~> 4.0.0)
-  inherited_resources!
+  inherited_resources
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick

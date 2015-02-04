@@ -40,8 +40,8 @@ gem 'spring',        group: :development
 
 gem "refile", require: ["refile/rails", "refile/image_processing"]
 
-gem 'inherited_resources', github: 'josevalim/inherited_resources', branch: 'master'
-gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources'
+gem 'activeadmin', github: 'activeadmin'
 gem 'refile-input', require: ["inputs/refile_input"]
 gem 'activeadmin-polymorphic', path: '../activeadmin-polymorphic'
 gem 'better_errors'
